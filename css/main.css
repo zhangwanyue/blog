@@ -1839,7 +1839,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #c91bf1;
+  background: #bbbec9;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3023,11 +3023,10 @@ ul.breadcrumb li+li:last-child {
 }
 .post-body h3 {
   font-size: 1.3em;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px dotted #eee;
 }
 .post-body h4 {
   font-size: 1.2em;
-  border-bottom: 1px dotted #eee;
 }
 .post-body h5 {
   font-size: 1.07em;
