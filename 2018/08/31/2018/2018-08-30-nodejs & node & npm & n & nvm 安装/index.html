@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/blog/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/blog/css/main.css?v=6.4.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png?v=6.4.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png?v=6.4.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png?v=6.4.0">
+
+
+  <link rel="mask-icon" href="/blog/images/logo.svg?v=6.4.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/blog/',
+    scheme: 'Gemini',
+    version: '6.4.0',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="介绍nodejsnode.js 是 javascript 的一种运行环境，是对 Google V8 引擎进行的封装。是一个服务器端的 javascript 的解释器。reactNative 开发过程中所需要的代码库。安装 nodejs 的时候会包含 npm。 nodenode 和 nodejs 其实是同一个东西，查看会发现，一般一个是另一个的软链接而已。 npm是 nodeJs 的包管理工具，np">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nodejs &amp; node &amp; npm &amp; n &amp; nvm 安装">
+<meta property="og:url" content="http://yoursite.com/2018/08/31/2018/2018-08-30-nodejs & node & npm & n & nvm 安装/index.html">
+<meta property="og:site_name" content="Vera&#39;s blog">
+<meta property="og:description" content="介绍nodejsnode.js 是 javascript 的一种运行环境，是对 Google V8 引擎进行的封装。是一个服务器端的 javascript 的解释器。reactNative 开发过程中所需要的代码库。安装 nodejs 的时候会包含 npm。 nodenode 和 nodejs 其实是同一个东西，查看会发现，一般一个是另一个的软链接而已。 npm是 nodeJs 的包管理工具，np">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-08-31T15:11:10.051Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="nodejs &amp; node &amp; npm &amp; n &amp; nvm 安装">
+<meta name="twitter:description" content="介绍nodejsnode.js 是 javascript 的一种运行环境，是对 Google V8 引擎进行的封装。是一个服务器端的 javascript 的解释器。reactNative 开发过程中所需要的代码库。安装 nodejs 的时候会包含 npm。 nodenode 和 nodejs 其实是同一个东西，查看会发现，一般一个是另一个的软链接而已。 npm是 nodeJs 的包管理工具，np">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/08/31/2018/2018-08-30-nodejs & node & npm & n & nvm 安装/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>nodejs & node & npm & n & nvm 安装 | Vera's blog</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/blog/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Vera's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/blog/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/blog/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/blog/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/blog/2018/08/31/2018/2018-08-30-nodejs & node & npm & n & nvm 安装/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhang Wanyue">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Vera's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">nodejs & node & npm & n & nvm 安装
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-08-31 16:42:27 / Modified: 23:11:10" itemprop="dateCreated datePublished" datetime="2018-08-31T16:42:27+08:00">2018-08-31</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/blog/categories/install-config/" itemprop="url" rel="index"><span itemprop="name">install & config</span></a></span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/blog/categories/front-end/" itemprop="url" rel="index"><span itemprop="name">front-end</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon"
+            >
+            <i class="fa fa-eye"></i>
+             Views:  
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><h4 id="nodejs"><a href="#nodejs" class="headerlink" title="nodejs"></a>nodejs</h4><p>node.js 是 javascript 的一种运行环境，是对 Google V8 引擎进行的封装。是一个服务器端的 javascript 的解释器。<br>reactNative 开发过程中所需要的代码库。<br>安装 nodejs 的时候会包含 npm。</p>
+<h4 id="node"><a href="#node" class="headerlink" title="node"></a>node</h4><p>node 和 nodejs 其实是同一个东西，查看会发现，一般一个是另一个的软链接而已。</p>
+<h4 id="npm"><a href="#npm" class="headerlink" title="npm"></a>npm</h4><p>是 nodeJs 的包管理工具，npm 管理对应 nodeJs 的第三方插件。</p>
+<ul>
+<li>安装 npm 一定要先安装 nodejs 吗？<br>npm is an app written entirely in JavaScript and depends very heavily on Node.js APIs (and other pure-JavaScript packages that in turn depend on Node.js APIs). Because Node.js is a scripting platform running a dynamic language (just like Python, Ruby, or Perl), apps written atop it need to have access to the binary to run. Having Node installed is a prerequisite for that reason. Because this is how npm works.</li>
+</ul>
+<h4 id="nvm-amp-n"><a href="#nvm-amp-n" class="headerlink" title="nvm &amp; n"></a>nvm &amp; n</h4><p>n 是 nodejs 的版本管理工具,管理nodejs版本和npm版本。<br>nvm 是 mac 上的，Linux 上可以使用 n。<br><a id="more"></a></p>
+<h2 id="系统版本"><a href="#系统版本" class="headerlink" title="系统版本"></a>系统版本</h2><ul>
+<li>ubuntu 16.04</li>
+</ul>
+<h2 id="安装方式"><a href="#安装方式" class="headerlink" title="安装方式"></a>安装方式</h2><ul>
+<li>去官网直接下载：<br><a href="https://nodejs.org/en/" target="_blank" rel="noopener">https://nodejs.org/en/</a></li>
+<li>使用<code>apt-get</code>安装<br>*</li>
+</ul>
+<h3 id="直接使用apt-get安装nodejs-amp-npm"><a href="#直接使用apt-get安装nodejs-amp-npm" class="headerlink" title="直接使用apt-get安装nodejs &amp; npm"></a>直接使用<code>apt-get</code>安装nodejs &amp; npm</h3><p><code>sudo apt-get install nodejs</code><br><code>sudo apt-get install npm</code><br>但是会发现安装的版本不是最新的，是很低的版本，但接下来可以使用n做版本管理。<br>当然也可以直接去官网下载最新的版本，或者添加其他源来下载最新的版本。</p>
+<h3 id="使用npm管理安装包"><a href="#使用npm管理安装包" class="headerlink" title="使用npm管理安装包"></a>使用npm管理安装包</h3><ul>
+<li>使用npm install的包位置:<br><a href="https://stackoverflow.com/questions/5926672/where-does-npm-install-packages" target="_blank" rel="noopener">https://stackoverflow.com/questions/5926672/where-does-npm-install-packages</a><br>1) global libraries:<br>可以使用<code>npm list -g</code>查看安装包位置，<br>默认在<code>/usr/local/lib/node_modules</code>中<br>2) non-global libraries:<br>可以使用<code>npm list</code>查看安装包的位置，一般在当前目录下。</li>
+</ul>
+<h3 id="使用n-mac上可以使用nvm-管理node版本"><a href="#使用n-mac上可以使用nvm-管理node版本" class="headerlink" title="使用n(mac上可以使用nvm)管理node版本"></a>使用n(mac上可以使用nvm)管理node版本</h3><ul>
+<li><p>前提是必须安装了npm<br>可以使用刚才<code>sudo apt-get install npm</code>的方式先安装一个低版本的npm。</p>
+</li>
+<li><p>安装n:<br><code>sudo npm install n -g</code><br>发现n被安装在了<code>/usr/local/lib/node_modules</code>中</p>
+</li>
+<li><p>使用n下载nodejs:<br>查看所有可安装的版本:<br><code>n list</code><br>安装使用nodejs的版本号为version的版本：<br><code>sudo n version</code><br>安装使用nodejs的stable版本:<br><code>sudo n stable</code><br>安装使用nodejs的latest版本:<br><code>sudo n latest</code><br>安装使用nodejs的lts(long term support)版本：<br><code>sudo n lts</code></p>
+</li>
+<li><p>nodejs &amp; node<br>但是安装完成之后会发现<code>node --version</code>已经是最新的了，但是<code>nodejs --version</code>还是老版本的。<br>使用<code>which node</code>和<code>which nodejs</code>查看可以看到：<br>node的位置是<code>/usr/local/bin</code>，而nodejs的位置是<code>/usr/bin</code>。这是因为使用<code>sudo apt-get install nodejs</code>的时候在<code>/usr/bin</code>下建立了node和nodejs可执行文件，但是使用<code>sudo n version</code>安装的时候在<code>/usr/bin</code>下只生成了node的可执行文件，并没有nodejs。<br><strong>使用<code>echo $PATH</code>可以看到，<code>/usr/local/bin</code>的优先级是高于<code>/usr/bin</code>的</strong>，所以在<code>/usr/local/bin</code>中有node的时候，选择了这个node，但是<code>/usr/local/bin</code>没有nodejs，所以选择了<code>/usr/bin</code>中的nodejs。<br>解决办法也很简单，在<code>/usr/local/bin</code>中建立一个nodejs的软链接就可以了：<code>sudo ln -s /usr/local/bin/node /usr/local/bin/nodejs</code></p>
+</li>
+<li><p><code>sudo n version</code>安装的包在哪里<br>发现<code>/usr/local/bin</code>中也只有当前使用的一个node版本，而<code>/usr/local/bin/npm</code>中的npm也是一个软链接指向了<code>/usr/local/lib/node_modules/npm</code>（这个位置是<code>npm install -g</code>的默认位置），这里也只有当前使用的npm版本，那么安装的那么多版本放在哪里了？<br>n install的工作方式是这样的：在安装的时候，n 会先将指定版本的 node 存储下来，然后将其复制到我们熟知的路径 /usr/local/bin。而存储的位置在安装的时候可以看到，在<code>/usr/local/n/version</code>，每次激活一个版本就会将该版本对应的node和npm复制到对应的<code>/usr/local/bin/node</code>和<code>/usr/local/lib/node_modules/npm</code>的位置。</p>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2018/08/29/2018/2018-08-31-setup_my_blog/" rel="next" title="Hexo + Next + github + Atom 博客搭建">
+                <i class="fa fa-chevron-left"></i> Hexo + Next + github + Atom 博客搭建
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/2018/08/31/2018/2018-08-31-cow-guanhu-huangbo/" rel="prev" title="《斗牛》管虎 黄渤 ">
+                《斗牛》管虎 黄渤  <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/blog/uploads/avatar.jpg"
+                alt="Zhang Wanyue" />
+            
+              <p class="site-author-name" itemprop="name">Zhang Wanyue</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/blog/archives/">
+                
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/blog/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/zhangwanyue" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:zhangwanyue_vera@outlook.com" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://twitter.com/wanyue_vera" target="_blank" title="Twitter"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://zhangwanyue.gitbooks.io/study/" target="_blank" title="Gitbook"><i class="fa fa-fw fa-book"></i>Gitbook</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#介绍"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#nodejs"><span class="nav-number">1.0.1.</span> <span class="nav-text">nodejs</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#node"><span class="nav-number">1.0.2.</span> <span class="nav-text">node</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#npm"><span class="nav-number">1.0.3.</span> <span class="nav-text">npm</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#nvm-amp-n"><span class="nav-number">1.0.4.</span> <span class="nav-text">nvm &amp; n</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#系统版本"><span class="nav-number">2.</span> <span class="nav-text">系统版本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装方式"><span class="nav-number">3.</span> <span class="nav-text">安装方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#直接使用apt-get安装nodejs-amp-npm"><span class="nav-number">3.1.</span> <span class="nav-text">直接使用apt-get安装nodejs &amp; npm</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用npm管理安装包"><span class="nav-number">3.2.</span> <span class="nav-text">使用npm管理安装包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用n-mac上可以使用nvm-管理node版本"><span class="nav-number">3.3.</span> <span class="nav-text">使用n(mac上可以使用nvm)管理node版本</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zhang Wanyue</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Gemini</a> v6.4.0</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv" title="Total Visitors">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="site-pv" title="Total Views">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=6.4.0"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=6.4.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/affix.js?v=6.4.0"></script>
+
+  <script type="text/javascript" src="/blog/js/src/schemes/pisces.js?v=6.4.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=6.4.0"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=6.4.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=6.4.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
